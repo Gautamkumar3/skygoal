@@ -13,7 +13,7 @@ import axios from "axios";
 
 const Login = () => {
   const [data, setData] = useState({
-    user_name: "",
+    email: "",
     password: "",
   });
 
@@ -39,10 +39,7 @@ const Login = () => {
           isClosable: true,
           position: "top",
         });
-        localStorage.setItem(
-          "user_data",
-          JSON.stringify({ name: res.data.name, token: res.data.token })
-        );
+        localStorage.setItem("token", JSON.stringify(res.data.token));
         navigate("/");
       })
       .catch((er) => {
@@ -72,11 +69,11 @@ const Login = () => {
       </Heading>
       <form onSubmit={handleSubmit}>
         <FormControl isRequired>
-          <FormLabel>User name</FormLabel>
+          <FormLabel>Email</FormLabel>
           <Input
-            type={"text"}
-            name="user_name"
-            placeholder="user name"
+            type={"email"}
+            name="email"
+            placeholder="email"
             onChange={handleChange}
           />
 
